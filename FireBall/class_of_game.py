@@ -1,5 +1,6 @@
 import pygame
 import lib_collide
+import random
 
 class Sprite(pygame.sprite.Sprite):
     def __init__(self,img,x,y):
@@ -22,11 +23,43 @@ class Player(Sprite):
             self.image = self.animGoL[self.cadr % 5]
         if lib_collide.collideG(self.rect,GroupFireball):
             global game = False
+        self.cadr += 1
+
+class Const():
+    def __init__(self,value):
+        self.value = value
 
 class Fireball(Sprite):
-    def __init__(self,img,x,y,seepdy,Anim):
-        Sprite.__init__(self,img,x,y)
+    def __init__(self,img, Anim, group):
+        Sprite.__init__(self,img,random.randint(0,1200),0)
         self.anim = Anim
-        self.speedy = speedy
+        self.speedy = 1
+        self.cadr = 0
+        self.add(group)
+    def update(self,g):
+        if self.rect.y < 700:
+            self.speedy = self.speedy + g.value
+            self.rect.y = self.rect.y + self.speedy
+        else:
+            self.rect.y = 0
+            self.rect.x = random.randint(0,1200)
+            self.speedy = 1
+        self.image = self.anim[self.cadr % 4]
+        self.cadr += 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

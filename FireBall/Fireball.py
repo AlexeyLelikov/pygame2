@@ -1,2 +1,2 @@
 import pygame
-import lib_collide
+import class_of_game

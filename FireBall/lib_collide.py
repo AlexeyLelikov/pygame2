@@ -11,3 +11,12 @@ def collide(Sprite1, Sprite2):
         return  True
     else:
         return False
+
+def collideG(Sprite,Group):
+    Iscollide = False
+    for Spr in Group.sprites():
+        if collide(Sprite.rect, Spr.rect):
+            Iscollide = True
+    return Iscollide
+
+
