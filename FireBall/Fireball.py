@@ -1,5 +1,5 @@
 import pygame
-import class_of_game
+from class_of_game import Const,Player,Fireball
 # Анимация Героя
 ImgPlayerGoR = [pygame.image.load('GoAnim/b1.png'),
                pygame.image.load('GoAnim/b2.png'),
@@ -19,4 +19,7 @@ for i in range(len(ImgFireBall)):
     ImgFireBall[i] = pygame.transform.rotate(scale,-90)
 clock = pygame.time.Clock()
 g = Const(1)
+w = pygame.display.set_mode((1200,700))
+GroupFireBall = pygame.sprite.Group()
+
 
