@@ -14,6 +14,7 @@ class Player(Sprite):
         self.animGoL = GoL
         self.speedx = speedx
         self.cadr = 0
+        self.game = True
     def update(self,keys,GroupFireball):
         if keys[pygame.K_RIGHT]:
             self.rect.x += self.speedx
@@ -22,7 +23,7 @@ class Player(Sprite):
             self.rect.x -= self.speedx
             self.image = self.animGoL[self.cadr % 5]
         if lib_collide.collideG(self.rect,GroupFireball):
-            global game = False
+            self.game = False
         self.cadr += 1
 
 class Const():
