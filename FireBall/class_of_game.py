@@ -22,7 +22,7 @@ class Player(Sprite):
         if keys[pygame.K_LEFT]:
             self.rect.x -= self.speedx
             self.image = self.animGoL[self.cadr % 5]
-        if lib_collide.collideG(self.rect,GroupFireball):
+        if lib_collide.collideG(self,GroupFireball):
             self.game = False
         self.cadr += 1
 

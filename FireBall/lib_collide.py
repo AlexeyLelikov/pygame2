@@ -17,6 +17,7 @@ def collideG(Sprite,Group):
     for Spr in Group.sprites():
         if collide(Sprite.rect, Spr.rect):
             Iscollide = True
+            return Iscollide
     return Iscollide
 
 
