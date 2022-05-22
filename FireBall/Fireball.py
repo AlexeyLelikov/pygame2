@@ -15,7 +15,7 @@ ImgFireBall = [pygame.image.load('GoAnim/fireball.png'),
                pygame.image.load('GOAnim/fireball2.png'),
                pygame.image.load('GOAnim/fireball3.png')]
 for i in range(len(ImgFireBall)):
-    scale = pygame.transform.scale(ImgFireBall[i],(180,65))
+    scale = pygame.transform.scale(ImgFireBall[i],(90,35))
     ImgFireBall[i] = pygame.transform.rotate(scale,-90)
 clock = pygame.time.Clock()
 g = Const(1)
@@ -23,7 +23,7 @@ w = pygame.display.set_mode((1200,700))
 GroupFireBall = pygame.sprite.Group()
 player = Player('GoAnim/b1.png',550,600,5,ImgPlayerGoL,ImgPlayerGoR)
 Fb = Fireball('GoAnim/fireball.png',ImgFireBall,GroupFireBall)
-Fb2 = Fireball('GoAnim/fireball.png',ImgFireBall,GroupFireBall)
+#Fb2 = Fireball('GoAnim/fireball.png',ImgFireBall,GroupFireBall)
 game = True
 while (game):
     clock.tick(15)
@@ -33,7 +33,7 @@ while (game):
     GroupFireBall.update(g)
     keys = pygame.key.get_pressed()
     player.update(keys,GroupFireBall)
-    w.fill((0,0,0))
+    w.fill((255,255,255))
     w.blit(player.image,player.rect)
     GroupFireBall.draw(w)
     if player.game == False:
