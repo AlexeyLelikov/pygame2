@@ -31,18 +31,20 @@ class Player(Sprite):
     def update(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_RIGHT]:  # событие нажатия кнопки вправо
-            self.x += self.speed
+            self.rect.x += self.speed
         if keys[pygame.K_LEFT]:
-            self.x -= self.speed  # событие нажатия кнопки влево
+            self.rect.x -= self.speed  # событие нажатия кнопки влево
         if keys[pygame.K_UP]:  # событие нажатия кнопки вверх
-            self.y -= self.speed
+            self.rect.y -= self.speed
         if keys[pygame.K_DOWN]:
-            self.y += self.speed  # событие нажатия кнопки вниз
+            self.rect.y += self.speed  # событие нажатия кнопки вниз
 
 w = pygame.display.set_mode((ScreenWidth,ScreenHeight))
 world = pygame.Surface((WorldWidth,WorldHeight))
 player = Player(900,600,'player.png',3)
 camera = Camera()
+BG_image = pygame.image.load('bg.jpg')
+BG_image = pygame.transform.scale(BG_image,(1800,1200))
 game = True
 while game:
     for ev in pygame.event.get():  # выход из игры
@@ -51,8 +53,9 @@ while game:
     player.update()
     camera.update(player)
     world.fill((0,0,0))
+    world.blit(BG_image,(0,0))
     world.blit(player.image,player.rect)
-    w.blit(wolrd,(camera.x,camera.y))
+    w.blit(world,(camera.x,camera.y))
     pygame.display.update()
 pygame.quit()
 
