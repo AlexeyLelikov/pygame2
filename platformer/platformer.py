@@ -24,10 +24,33 @@ class Sprite(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(topleft = (x, y))
 
 class Player(Sprite):
-    def __init__(self,x,y,img,speed,Anim):
-        super().__init__(x,y,img)
+    def __init__(self, x, y, img, speed):
+        super().__init__(x, y, img)
         self.speed = speed
-        self.imgGoAnim = Anim
         self.cadr = 0
+    def update(self):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_RIGHT]:  # событие нажатия кнопки вправо
+            self.x += self.speed
+        if keys[pygame.K_LEFT]:
+            self.x -= self.speed  # событие нажатия кнопки влево
+        if keys[pygame.K_UP]:  # событие нажатия кнопки вверх
+            self.y -= self.speed
+        if keys[pygame.K_DOWN]:
+            self.y += self.speed  # событие нажатия кнопки вниз
+
+w = pygame.display.set_mode((ScreenWidth,ScreenHeight))
+world = pygame.Surface((WorldWidth,WorldHeight))
+player = Player(900,600,'player.png',3)
+camera = Camera()
+game = True
+while game:
+    for ev in pygame.event.get():  # выход из игры
+        if ev.type == pygame.QUIT:
+            game = False
+    player.update()
+    camera.update(player)
+
+
 
 
