@@ -50,6 +50,11 @@ while game:
             game = False
     player.update()
     camera.update(player)
+    world.fill((0,0,0))
+    world.blit(player.image,player.rect)
+    w.blit(wolrd,(camera.x,camera.y))
+    pygame.display.update()
+pygame.quit()
 
 
 
